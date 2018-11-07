@@ -1,0 +1,22 @@
+<div>
+<h1>Calc Program</h1>
+<p>
+  <input type="number" [(ngModel)]="first" placeholder="Enter v1" />
+</p>
+<p>
+  <input type="number" [(ngModel)]="second" placeholder="Enter v2"/>
+</p>
+<p>
+  Selection:<select [(ngModel)] = "choice">
+    <option>---Choice----</option>
+    <option>Add</option>
+    <option>Sub</option>
+    <option>Multiply</option>
+    <option>Divide</option>
+  </select>
+</p>
+<button (click)="process()">Get Result</button>
+  <p>The Result of this operation:
+    <span>{{result}}</span>
+  </p>  
+</div>

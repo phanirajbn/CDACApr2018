@@ -1,0 +1,11 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+    <table border="1">
+        <tr *ngFor="let cst of customers">
+            <td>{{cst.CstId}}</td>
+            <td>{{cst.CstName}}</td>
+            <td>{{cst.CstAddress}}</td>
+        </tr>
+    </table>
+</div>
+<app-add-cst (onSave)="insertRec($event)"></app-add-cst>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		/*function welcome(){
+			alert("Test123")
+		}*/
+		function program(){
+			//$("div").fadeOut();
+			/*$("a").click(function(){
+				$("div").fadeIn(2000);
+			});*/
+
+			$("button").click(function(){
+				var v1 = $("input:eq(0)").val();
+				var v2 = $("input:eq(1)").val();
+				var op = $("input:eq(2)").val();
+				$("p").last().text("The result is " + (parseInt(v1) + parseInt(v2)));
+			});
+//If want to access the element by id, U should use # to get the element by id...
+			$("#show").click(function(){
+				$("#show").innerText ="[Hide]";
+				$('#slide').slideToggle(2000);
+			})
+		}
+		$(program)
+	</script>
+</head>
+<body>
+	<h1>Calc Program using jQuery</h1>
+	<a href="#">Perform Operation</a>
+	<div id="calc">
+	<div style="padding:10px; margin: 10px">
+		<p>
+			<input type="number" id="v1" placeholder="Enter value1"/>
+			<input type="number" id="v2" placeholder="Enter value2"/>
+			<datalist id="dtList">
+				<option>Add</option>
+				<option>Sub</option>
+				<option>Mul</option>
+				<option>Div</option>
+			</datalist>	
+		   <input type="search" list = "dtList" id="operation" placeholder="Enter the operation"/>
+		   <button id="btnget">Get Answer</button>
+		</p>
+		<p id="pResult"></p>
+	</div>
+	<div>
+		<p style="background-color: blue; text-align: center; color:yellow; margin: 4px; padding:5px;">
+			<span>Movies by this Director</span>
+			<span style="float:right; color:yellow">
+				<a id="show" href="#">[show]</a>
+				<div id="slide" style="background-color: lightgreen; display: none">
+					<p>Data 1</p>
+					<p>Data 2</p>
+					<p>Data 3</p>
+					<p>Data 4</p>
+					<p>Data 5</p>
+					<p>Data 6</p>
+				</div>
+			</span>
+		</p>
+	</div>
+</body>
+</html>

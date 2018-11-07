@@ -1,0 +1,32 @@
+*{
+	color:black;
+	background-color: lightgrey;
+	padding: 5px;
+	margin: 5px;	
+}
+.menu{
+	background-color: indianred;
+	color:red; 
+}
+.main{
+	padding:5px;
+	margin: 5px;
+	border: 2px solid blue;
+	width: 90%;
+}
+.addRec{
+	vertical-align: top;
+	padding:5px;
+	margin: 5px;
+	text-align: center;
+	border: 2px solid blue;
+	width: 95%
+}
+div{
+	vertical-align: top;
+	padding:5px;
+	margin: 5px;
+	display: inline-block;
+	width: 45%;
+	border: 2px solid blue;
+}

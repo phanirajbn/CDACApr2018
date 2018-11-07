@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="../Scripts/Recap.js"></script>
+	<script type="text/javascript">
+		function perform() {
+			var v1 = parseFloat(document.getElementById('v1').value);
+			var v2 = parseFloat(document.getElementById('v2').value);
+			var op = document.getElementById('operation').value;
+			var result = 0.0;
+			switch (op) {
+				case "Add":
+				result = add(v1, v2);
+					//document.getElementById('add').innerText = "The added value is " + (add(v1, v2));
+					break;
+				case "Sub":
+					result = sub(v1, v2);
+					//document.getElementById('sub').innerText = "The subtracted value is " + (sub(v1, v2));
+					break;
+				case "Mul":
+					result = mul(v1, v2);
+					//document.getElementById('mul').innerText = "The Multiplied value is " + (mul(v1, v2));
+					break;
+				default:
+					// statements_def
+					break;
+			}
+			var opr = new operation(v1, v2, op, result);
+			count = parseInt(localStorage.getItem("count"));
+			if(isNaN(count)){
+				count = 5;
+			}
+			if(previousOperations.length == count)
+				previousOperations.shift();
+			previousOperations.push(opr);//adds to the bottom.
+
+			populate(previousOperations);
+		}
+
+		function populate(opr){
+			//debugger;	
+			var reversed = opr.reverse()
+			var div = document.getElementById('lastOperations');
+			div.innerHTML ="";
+			if(count > reversed.length)
+				count = reversed.length;
+			for (var i = 0; i < count; i++) {
+				div.innerHTML += reversed[i].getOperation() +"<br/>";
+			}
+		}
+		
+
+		function saveSettings(){
+			count = parseInt(document.getElementById('count').value);
+			if(isNaN(count)){
+				debugger;
+				document.getElementById('count').parentNode.innerHTML += "Number must be set";
+			}
+			localStorage.setItem("count", count);
+			var color = document.getElementById('color').value;
+			document.getElementById('calc').style.backgroundColor = color;
+			populate(previousOperations);
+		}
+
+		function init(){
+			document.getElementById('btnget').addEventListener('click',perform);
+			document.getElementById('btnSave').addEventListener('click',saveSettings);
+		}
+		window.addEventListener('load', init);
+	</script>
+</head>
+<body>
+	<h1>Calc Program</h1>
+	<div id="calc">
+	<div style="padding:10px; margin: 10px">
+		<p>
+			<input type="number" id="v1" placeholder="Enter value1"/>
+			<input type="number" id="v2" placeholder="Enter value2"/>
+			<datalist id="dtList">
+				<option>Add</option>
+				<option>Sub</option>
+				<option>Mul</option>
+				<option>Div</option>
+			</datalist>
+		   <input type="search" list = "dtList" id="operation" placeholder="Enter the operation"/>
+		   <button id="btnget">Get Answer</button>
+		</p>
+		<p><span id="add"></span></p>
+		<p><span id="sub"></span></p>
+		<p><span id="mul"></span></p>
+	</div>
+	<div class="history" id="lastOperations">
+
+	</div>
+	<div class="settings">
+		<h2>Settings</h2>
+		<p>
+			<input type="text" id="count" placeholder="Enter the Count for History">
+			<span id="err" style="color:red"></span>
+		</p>
+		<p>
+			<input type="color" id="color" placeholder="select the color">
+		</p>
+		<button id="btnSave">Save</button>
+	</div>
+</body>
+</html>

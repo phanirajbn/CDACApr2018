@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Emp Info system</title>
+	<link rel="stylesheet" type="text/css" href="../Styles/main.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="../Scripts/empScript.js"></script>
+	<script type="text/javascript">
+		//var empList = new collection();
+		var url = "http://localhost:8080/EmployeeAPi/empInfo.php";	
+		//var url = "http://localhost:1234";	
+		//JQuery will request for GET thro Ajax and once the data is fetched, it will display the data in the format that it wants to show..
+		
+		function showRecords(){
+			$("table").find("tr:gt(0)").remove();//Removes all the rows other than the First row....
+			$.get(url, function(json){
+			console.log(json);
+			var data = JSON.parse(json);
+			console.log(data);
+			$.each(data, function(index, value){
+				var row = '<tr><td>' + value.empid + '</td><td>' + value.empname;
+				row += '</td><td><a href="#" class="edit">Edit</a></td></tr>'; 
+				$("table").append(row);	
+				});
+			$(".edit").click(function(){
+				debugger;
+				var id = $(this).parent().siblings("td:eq(0)").text();
+				$.get(url + '?id=' + id, function(data){
+					$("#id").text(data[0].empid)
+					$("#name").val(data[0].empname)
+					$("#address").val(data[0].empaddress)
+				})
+			});
+			/*var recs = empList.allEmps();
+			$.each(recs, function(index, value){
+				var row = '<tr><td>' + value.empid + '</td><td>' + value.empName;
+				row += '</td><td><a href="#" class="edit">Edit</a></td></tr>'; 
+				$("table").append(row);
+			})*/
+
+
+
+				/*var emp = empList.getEmp(id);
+				if(emp){
+					$("#id").text(emp.empid)
+					$("#name").val(emp.empName)
+					$("#address").val(emp.empAddress)
+				}else{
+					alert("Employee details not found")
+				}*/	
+			})
+		}
+		$(function(){
+			$("a:eq(0)").click(showRecords);
+			$("#btnUpdate").click(function(){
+				var emp ={};
+				emp.empid = $("#id").text()
+				emp.empname = $("#name").val()
+				emp.empaddress = $("#address").val()
+				$.ajax({
+					method:'PUT',
+					data: JSON.stringify(emp),
+					url:url,
+					success:function(data){
+						alert("employee updated")
+					},
+					error: function(err){
+						alert(JSON.stringify(err));
+					}
+				});
+				//$.post(url, JSON.stringify(emp), function(data){
+				//	console.log(data);
+				//})
+				/*empList.update(new emp($("#id").text(), $("#name").val(), $("#address").val()));
+				*/showRecords();
+			})
+			$("#btnNew").click(function(){
+				var emp ={};
+				emp.empid = $("#newid").val()
+				emp.empname = $("#newname").val()
+				emp.empaddress = $("#newaddress").val()
+				$.post(url, JSON.stringify(emp), function(data){
+					console.log(data);
+				})
+				/*
+				empList.newEmp(new emp($("#newid").val(), $("#newname").val(), $("#newaddress").val()))
+				alert("Employee added");*/
+				showRecords();
+			}) 	
+		})
+	</script>
+</head>
+<body>
+	<p> 
+	<nav>
+		<p class="menu">
+			<a href="#">Show All</a>
+			<a href="#">Add New</a>
+			<a href="#">Clear All</a>
+		</p>
+	</nav>
+	<div class="main">
+		<div>
+			<h2>List of employees</h2>
+			<table border="1">
+				<tr>
+					<th>Employee ID</th>
+					<th>Employee Name</th>
+					<th>Options</th>
+				</tr>
+			</table>
+		</div>
+		<div id="details">
+			<h2>Details of the employee</h2>
+			<p>EmpID:<span id="id"></span>
+			<p><input type="text" id="name"/></p>
+			<p><input type="text" id="address"/></p>
+			<p><button id="btnUpdate">Update</button></p>
+		</div>
+		<div class="addRec">
+			<h2>Add new Details</h2>
+			<p><input id="newid" type="number" placeholder="Enter ID">
+			<p><input type="text" id="newname" placeholder="Enter Name"/></p>
+			<p><input type="text" id="newaddress" placeholder="Enter Address"/></p>
+			<p><button id="btnNew">Add</button></p>
+		</div>
+	</div>
+</body>
+</html>

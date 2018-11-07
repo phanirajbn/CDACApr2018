@@ -1,0 +1,40 @@
+<div style="display:inline-block;">
+  <h1>Employee Rest Software</h1>
+  <table border="1">
+    <tr>
+      <td>Employee ID</td>
+      <td>Employee name</td>
+      <td>Employee address</td>
+      <td>Options</td>
+    </tr>
+    <tr *ngFor="let emp of data">
+      <td>{{emp.empid}}</td>
+      <td>{{emp.empname}}</td>
+      <td>{{emp.empaddress}}</td>
+      <td>
+        <a [routerLink]="['/RestService', emp.empid]" (click)="edit()">Edit</a>  
+      </td>
+    </tr>
+  </table>
+</div>
+<div *ngIf="selectedEmp">
+  <h1> Details of Employee </h1>
+  <p>{{selectedEmp.empid}}</p>
+  <p>{{ selectedEmp.empname }}</p>
+  <p>{{selectedEmp.empaddress}}</p>
+</div>
+<div>
+  <h2>Add new Employee Details</h2>
+  <p>
+    <input type="number" placeholder="Enter Employee Id" [(ngModel)]="id">
+  </p>
+  <p>
+    <input type="text" placeholder="Enter Employee Name" [(ngModel)]="name">
+  </p>
+  <p>
+    <input type="text" placeholder="Enter Employee Address" [(ngModel)]="address">
+  </p>
+  <p>
+    <button (click)="insertRec()">Save</button>
+  </p>
+</div>

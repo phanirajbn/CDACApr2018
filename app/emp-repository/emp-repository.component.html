@@ -1,0 +1,21 @@
+<div style="display:inline-block;">
+  <h1>Employee Repository Software</h1>
+  <input type="text" placeholder="Search name" [(ngModel)]="mySearch"/> 
+  <table border="1">
+    <tr>
+      <td>Employee ID</td>
+      <td>Employee name</td>
+      <td>Employee address</td>
+      <td>Options</td>
+    </tr>
+    <tr *ngFor="let emp of empList | empFilter : mySearch">
+      <td>{{emp.empId}}</td>
+      <td>{{emp.empName}}</td>
+      <td>{{emp.empAddress}}</td>
+      <td><a href="#" (click)="display(emp)">Edit</a></td>
+    </tr>
+  </table>
+</div>
+<app-emp-detail [selectedEmp] = 'selectedEmp'></app-emp-detail>
+<app-new-emp (onSave)="addEmp($event)"></app-new-emp>
+mailto:kiranpragash@gmail.com
