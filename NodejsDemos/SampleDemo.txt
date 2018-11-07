@@ -1,0 +1,1 @@
+Some Text content to write from Nodejs app

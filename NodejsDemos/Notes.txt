@@ -1,0 +1,82 @@
+NodeJs?
+NodeJs is a platform for developing JS applications on Server side. Nodejs is just JS without browser. Based on V8 JS Runtime Engine that is used by google Chrome. 
+It uses the Chrome's JS Engine to execute in the Node environment, pulling the chrome feature into UR Command Prompt. 
+This makes JS to be used as backend server. It thus opens up a lot of new things which JS didnt do earlier. As its now working on a robust environment, u could have all the features of a typical programming language that include file io, database operations, user interactions and many more. 
+Why NodeJs?
+Its super fast and highly scalable environment there by allowing lot of Companies to use it for their development:Paypal, Uber, NetFlix to name a few..
+Builds faster than most of other web apps
+Does not need a fat web server. Node contains Server modules that can allow to host a server and start publishing applications thro it. 
+Its got 2x request/sec(Twice the speed of handling requests over other web counterparts)
+Js is available everywhere: Frontend + backend will be Js only.. U can now write an entire app using JS without a need of another programming language. 
+It has got a large repository of libraries available as open source called as NODE PACKAGE MANAGER. One of the world's largest reuseable code in JS. 
+
+Nodejs is a single threaded Application environment that manages multiple requests in an async manner in the form of callback functions.
+Who developed it. Who maintains it.
+
+What kind of Apps U can build?
+JSON APIs(REST Services).
+Single Page Apps: Ajax Heavy Single Page Application that works like Gmail page. 
+Stream data across the Application. 
+Iot Apps could be developed using Nodejs as server. 
+
+What U cant do with NodeJs?
+CPU Heavy apps dont fit in nodejs..
+Simple CRUD HTML Apps will not give much of the Node js business benifits that we usually expect from Nodejs Apps. U could simply go to any web server technologies like php, asp.net or jsp.
+
+NodeJs apps are js code that run from the command prompt. So U create classes, modules, functions that are executed using Command prompt.  	
+All node apps are executed by creating modules and executing the modules from Node prompt.
+There are 3 ways to create modules: global, Anonymous and named modules. A module is JS component that is self sustained and has less dependencies from external sources. 
+
+What are Core Modules?
+Modules in NodeJs are simple or complex functionality organized in a single or multiple JS files which can be reused through out the NodeJs App. Each module works like independent unit, so that it cannot interfere with other modules or pollute the global scope. Modules can also be placed in seperate Js files and kept in indivdual folders with a clean seperation of one module with an other.
+
+Types of Modules: Core Modules, Local Modules and Third party modules. 
+Core modules are the one that is provided by the Nodejs Framework. Nodejs is actually a light weight framework to develop apps on Node using these modules provided by it. 
+NOTE: Core modules contain min functionalities of Nodejs. These modules are distributed in binary forms and are loaded automatically when the nodejs starts. U use require to import the modules into UR Nodejs app.
+
+Creating a nodejs server...
+http Core module is used for creating simple web servers in node. It handles basic http requests for the web application like what an IIS or an Apache Server would do. Each request is handled asynchronously.
+
+
+Extending HTTP to create rich web centric Apps, we have express, a 3rd party node module for developing Web Apps including REST SERVICES. 
+EXPRESS has to be installed in UR machine globally using:
+npm install -g express
+
+If U R developing express app only once, U could install it locally within UR App folder. U should remove -g then. 
+
+Express is improvised version of http. http is raw and simple web server management. Express is more powerfull and has builtin functions to most of the common operations that U need for developing Web Apps like Redirecting, handling QUerystrings, Cookies, Sessions, Application, Routing and many more including request and response.
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
